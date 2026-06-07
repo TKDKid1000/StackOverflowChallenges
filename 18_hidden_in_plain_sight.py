@@ -49,7 +49,7 @@ def lsbs_msg(lsbs_str: str) -> str:
 
 
 def lsbs_img(lsbs_str: str) -> Image.Image:
-    print(lsbs_str[:HEADER + 2 * SIXTEEN_BITS])
+    print(lsbs_str[: HEADER + 2 * SIXTEEN_BITS])
     lsbs_header, lsbs_width, lsbs_height, lsbs_pixels = (
         lsbs_str[:HEADER],
         lsbs_str[HEADER : HEADER + SIXTEEN_BITS],
@@ -60,7 +60,7 @@ def lsbs_img(lsbs_str: str) -> Image.Image:
     width = int(lsbs_width, 2)
     height = int(lsbs_height, 2)
 
-    pixels = [int(p) * 255 for p in lsbs_pixels[:width*height]]
+    pixels = [int(p) * 255 for p in lsbs_pixels[: width * height]]
     pixels = bytes(pixels)
 
     img_out = Image.frombytes("L", (width, height), pixels)
